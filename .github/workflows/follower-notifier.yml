@@ -17,10 +17,7 @@ jobs:
         uses: dawidd6/action-send-mail@v3
         # if: steps.followerChange.outputs.shouldNotify == 'true'
         with:
-          server_address: ${{ secrets.MAIL_HOST }}
-          server_port: 465
-          username: ${{ secrets.MAIL_USERNAME }}
-          password: ${{ secrets.MAIL_PASSWORD }}
+          connection_url: smtp+starttls://${{ secrets.MAIL_USERNAME }}:${{ secrets.MAIL_PASSWORD }}@${{ secrets.MAIL_HOST }}:587
           subject: GitHub Follower Change
           from: Follower Change Notifier
           to: ${{ secrets.TO_EMAIL }}
